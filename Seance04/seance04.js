@@ -1,5 +1,5 @@
 console.log(Number("3.14"))
-console.log(Number("12 34"))
+console.log(Number("12 34"))    
 console.log(Number(""))
 console.log(Number(" "))
 
@@ -20,8 +20,7 @@ console.log(typeof(cz))
 
 
 
-
-/* S tring to Number */
+/* String to Number */
 
 
 let s = 2
@@ -49,12 +48,6 @@ let d = new Date()
 console.log( d .getDate().toString() )
 console.log( String( d .getDay() )             )
 console.log( String( d .toLocaleDateString() ) )
-
-const today = new Date();
-const fullDayName = today.toLocaleDateString('en-US', { weekday: 'long' });
-console.log(fullDayName); // Output: Friday
-
-
 console.log( d .getFullYear()        )
 console.log( d .getHours()           )
 console.log( d .getMilliseconds()    )
@@ -67,46 +60,33 @@ console.log( d .getTimezoneOffset()  )
 console.log( d .getDate()            )
 
 
-let day
-switch (new Date().getDay()) {
-    case 0:
-    day = "Sunday"; break;
-    case 1:
-    day = "Monday"; break;
-    case 2:
-    day = "Tuesday"; break;
-    case 3:
-    day = "Wednesday"; break;
-    case 4:
-    day = "Thursday"; break;
-    case 5:
-    day = "Friday"; break;
-    case 6: 
-    day = "Saturday"
-    }
 
-console.log(day)
 
+
+
+
+
+// exercice du moyenne des notes :
 
 let mention;
+let moyenne = prompt("Entrer la moyenne");
 
+moyenne = parseFloat(moyenne)
 
-let moyenne = 40/2;
+if (moyenne >= 18 && moyenne <= 20) {
+    mention = "Excellent";
+} else if (moyenne > 16 && moyenne <= 18) {
+    mention = "Très bien";
+} else if (moyenne > 14 && moyenne <= 16) {
+    mention = "Bien";
+} else if (moyenne > 12 && moyenne <= 14) {
+    mention = "Normal";
+} else if (moyenne > 10 && moyenne <= 12) {
+    mention = "Faible";
+} else if (moyenne <= 10) {
+    mention = "Trop faible";
+} else {
+    mention = "Moyenne invalid";
+}
+console.log(mention);
 
-switch (moyenne) {
-     case moyenne >= 20 && moyenne <= 18 :
-        mention = "Exellent"; break;
-    case  moyenne > 16 && moyenne <= 18  :
-        mention = "Trés-bien"; break;
-    case moyenne > 14 && moyenne <= 16   :
-        mention = "bien"; break;
-    case  moyenne > 12 && moyenne <= 14:
-        mention = "normal"; break;
-    case moyenne > 10 && moyenne <= 12:
-        mention = "faible"; break;
-        case moyenne < 10:
-            mention = "trop-faible"; break;
-    default:
-        mention = "Invalid average";
-    }
-console.log(mention)
