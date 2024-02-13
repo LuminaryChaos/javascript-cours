@@ -29,7 +29,7 @@ let somme = function (a,b){
 
 
 //les expressions lambdas
-// Map (il retourne un une nouveau tableau)
+// Map (il retourne un nouveau tableau)
 
 
 let jours = ["lundi","mardi","mercredi","jeudi","vendredi","samedi","dimanche"];
