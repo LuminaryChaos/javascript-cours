@@ -2,36 +2,49 @@
 
 
 
-// // shows only the first elemnet
-// console.log(document.querySelector("div"));
+// shows only the first elemnet
+console.log(document.querySelector("div"));
 
-// // shows all the elemnet : o boucle ila bghiti twsl lga3 les elements
-// console.log(document.querySelectorAll("div"));
-
-
+ // shows all the elemnet : o boucle ila bghiti twsl lga3 les elements
+console.log(document.querySelectorAll("div"));
 
 
 
-for (let i = 0; i <= 2; i++){
-    vDiv[i].style.backgroundColor="red";
-    vDiv[i].style.color="white";
+let divS = document.querySelector(".divS"); // querySelectorAll TO WORK
+
+for (let i = 0; i < divS.length; i++){
+    divS[i].style.backgroundColor="red";
+    divS[i].style.color="white";
 };
 
+
 // console.log(vDiv[1]);
-// console.log(vDiv.length);
+console.log(divS.length);
 
 
 // Margin 
 
-document.querySelector(".divS").style.marginTop= "100px";
-document.querySelector(".divS").style.marginLeft= "100px";
-document.querySelector(".divS").style.marginRight= "100px";
-document.querySelector(".divS").style.marginBottom= "100px";
+let divX = document.querySelector(".divS");
+
+if (divX) {
+    divS.style.marginTop = "100px";
+    divS.style.marginLeft = "100px";
+    divS.style.marginRight = "100px";
+    divS.style.marginBottom = "100px";
+}
 
 
 // putting  in variable
-let titre = document.getElementById("DD106")
 
-titre.textContent="Infrastructure"
-titre.style.color="lime"
-titre.style.backgroundColor="aqua"
+let titres = [
+    document.getElementById("DD106"),
+    document.getElementById("DD105"),
+    document.getElementById("DD104")
+  ];
+  
+  for (let titre of titres) {
+    titre.textContent = "Infrastructure";
+    titre.style.color = "white";
+    titre.style.backgroundColor = "aqua";
+  }
+  
