@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            color: red;
+            display: none;
+        }
+        .searchdiv{
+            border: 2px dashed aqua;
+            width: fit-content;
+        }
+        
+    </style>
+</head>
+<body>
+
+
+
+    <form id="signup-form" name="formulaire" class="Form1">
+
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username">
+        <span id="username-error" class="error">Username cannot be blank.</span>
+        
+        <br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email">
+        <span id="email-error" class="error">Email cannot be blank.</span>
+        
+        <br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password">
+        <span id="password-error" class="error">Password cannot be blank.</span>
+        
+        <br>
+        
+        <label for="confirm-password">Confirm Password:</label><br>
+        <input type="password" id="confirm-password" name="confirm-password">
+        <span id="confirm-password-error" class="error">Please enter the password again.</span>
+        
+        <br>
+
+        <button class="btn-ajouter">Ajouter</button>
+        <button class="btn-annuler">Annulée</button>
+
+    </form>
+
+
+
+    <script src="form.js"></script>
+</body>
+</html>

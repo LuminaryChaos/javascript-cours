@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Notes</title>
+    <style>
+        .error {
+            color: red;
+            display: none;
+        }
+        .searchdiv {
+            border: 2px dashed aqua;
+            width: fit-content;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+    <form id="notes-form" class="Form1">
+        <label for="nom">Nom:</label><br>
+        <input type="text" id="nom" name="nom">
+        <br>
+
+        <label for="prenom">Prenom:</label><br>
+        <input type="text" id="prenom" name="prenom">
+        <br>
+
+        <label for="filiere">Filiere:</label><br>
+        <select name="filiere" id="filiere">
+            <option value="">Filiere</option>
+            <option value="Informatique">Informatique</option>
+            <option value="Electronique">Electronique</option>
+        </select>
+        <br>
+
+        <label for="modules">Modules:</label><br>
+        <select name="modules" id="modules">
+            <option value="">Modules</option>
+            <option value="M101">M101</option>
+            <option value="M102">M102</option>
+            <option value="M103">M103</option>
+            <option value="M104">M104</option>
+        </select>
+        <br>
+
+        <label for="notes">Notes:</label><br>
+        <select name="notes" id="notes">
+            <option value="">Notes</option>
+            <option value="18-20">18-20</option>
+            <option value="16-18">16-18</option>
+            <option value="14-16">14-16</option>
+            <option value="12-14">12-14</option>
+            <option value="10-12">10-12</option>
+            <option value="10-">10-</option>
+        </select>
+        <br><br>
+
+        <button class="btn-ajouter">Ajouter</button>
+    </form>
+
+    <div class="searchdiv">
+
+        <label for="recherche">Recherche:</label>
+        <input type="text" id="recherche" name="recherche" placeholder="Nom et Prenom">
+        <button id="searchBtn">Rechercher</button>
+
+        <table id="notesTable">
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                
+            </tbody>
+        </table>
+    </div> 
+
+    <script src="notes.js"></script>
+</body>
+
+
+
+
+
+
+
+
+
