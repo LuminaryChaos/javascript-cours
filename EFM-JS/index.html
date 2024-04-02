@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        tr:hover {
+            background-color: lightgreen;
+        }
+        #addForm {
+            display: none;
+        }
+        body {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: fit-content;
+        }
+        button{
+            width: 200px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>Product Management</h1>
+
+    <button onclick="showAddForm()"><<< Add Product</button>
+    <button onclick="deleteProduct()">Delete Product</button>
+    <button onclick="showCategories()">Show Categories</button>
+
+    <form id="addForm">
+        <label for="productCode">Product Code:</label><br>
+        <input type="number" id="productCode" required><br>
+
+        <label for="productTitle">Product Title:</label><br>
+        <input type="text" id="productTitle" required><br>
+
+        <label for="productDescription">Product Description:</label><br>
+        <textarea id="productDescription" required></textarea><br>
+
+        <label for="productPrice">Product Price:</label><br>
+        <input type="number" id="productPrice" required><br>
+
+        <label for="productCategory">Product Category:</label><br>
+        <input type="text" id="productCategory" required><br>
+
+        <button type="button" onclick="saveProduct()">Save</button>
+        <button type="button" onclick="cancelAdd()">Cancel</button>
+        <button type="button" onclick="clearFields()">Clear</button>
+    </form>
+
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <ul id="categoryList">
+        
+    </ul>
+    <button onclick="ClearBlock()"> Supprimer </button>
+    <button> Modifier</button>
+
+    <script>
+         
+         let products = [
+            { code: 1, title: "Machine", description: "Desc 1", price: 60.99, category: "Category S" },
+            { code: 2, title: "VR", description: "Desc 2", price: 99.99, category: "Category A" }
+        ];
+
+       
+        function showAddForm() {
+            document.getElementById("addForm").style.display = "block";
+        }
+
+        function saveProduct() {
+
+            let code = document.getElementById("productCode").value;
+            let title = document.getElementById("productTitle").value;
+            let description = document.getElementById("productDescription").value;
+            let price = document.getElementById("productPrice").value;
+            let category = document.getElementById("productCategory").value;
+
+            if (code && title && description && price && category) {
+                products.push({ code: code, title: title, description: description, price: price, category: category });
+                clearFields();
+                displayProducts();
+            } else {
+                alert("All fields are required!");
+            }
+        }
+
+        function cancelAdd() {
+            document.getElementById("addForm").style.display = "none";
+        }
+
+        function clearFields() {
+            document.getElementById("productCode").value = "";
+            document.getElementById("productTitle").value = "";
+            document.getElementById("productDescription").value = "";
+            document.getElementById("productPrice").value = "";
+            document.getElementById("productCategory").value = "";
+        }
+
+
+        function displayProducts() {
+            let tableBody = document.querySelector("#productTable tbody");
+            tableBody.innerHTML = "";
+
+            products.forEach(product => {
+                let row = tableBody.insertRow();
+                row.innerHTML = `<td>${product.code}</td>
+                                 <td>${product.title}</td>
+                                 <td>${product.description}</td>
+                                 <td>${product.price}</td>
+                                 <td>${product.category}</td>`;
+            });
+        }
+
+        displayProducts();
+
+        function deleteProduct() {
+            let table = document.getElementById("productTable");
+            let checkboxes = table.querySelectorAll("input[type='checkbox']:checked");
+            if (checkboxes.length > 0) {
+                if (confirm("Are you sure you want to delete selected product(s)?")) {
+                    checkboxes.forEach(checkbox => {
+                        let row = checkbox.closest("tr");
+                        let code = parseInt(row.cells[0].innerText);
+                        products = products.filter(product => product.code !== code);
+                        row.remove();
+                    });
+                }
+            } else {
+                alert("Please select at least one product to delete!");
+            }
+        }
+
+        
+        function showCategories() {
+            fetch("https://www.mystore.com/cat")
+                .then(response => response.json())
+                .then(data => {
+                    let categoryList = document.getElementById("categoryList");
+                    categoryList.innerHTML = "";
+                    data.data.forEach(category => {
+                        let li = document.createElement("li");
+                        li.textContent = category.titre;
+                        categoryList.appendChild(li);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching categories:", error);
+                });
+        }
+
+        let table = document.getElementById("productTable");
+        table.addEventListener("click", function(event) {
+            let target = event.target.closest("tr");
+            if (target) {
+                table.querySelectorAll("tr").forEach(row => {
+                    row.style.backgroundColor = "";
+                });
+                target.style.backgroundColor = "lightgreen";
+            }
+        });
+    </script>
+</body>
+</html>
