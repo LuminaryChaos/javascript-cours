@@ -1,120 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Management</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        tr:hover {
-            background-color: lightgreen;
-        }
-        #addForm {
-            display: none;
-        }
-        body {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: fit-content;
-        }
-        button{
-            width: 200px;
-        }
+
+
         
-
-    </style>
-</head>
-<body>
-    <h1>Product Management</h1>
-
-    <button onclick="showAddForm()"><<< Add Product</button>
-    <button onclick="deleteProduct()">Delete Product</button>
-    <button onclick="showCategories()">Show Categories</button>
-
-    <form id="addForm">
-        <label for="productCode">Product Code:</label><br>
-        <input type="number" id="productCode" required><br>
-
-        <label for="productTitle">Product Title:</label><br>
-        <input type="text" id="productTitle" required><br>
-
-        <label for="productDescription">Product Description:</label><br>
-        <textarea id="productDescription" required></textarea><br>
-
-        <label for="productPrice">Product Price:</label><br>
-        <input type="number" id="productPrice" required><br>
-
-        <label for="productCategory">Product Category:</label><br>
-        <input type="text" id="productCategory" required><br>
-
-        <button type="button" onclick="saveProduct()">Save</button>
-        <button type="button" onclick="cancelAdd()">Cancel</button>
-        <button type="button" onclick="clearFields()">Clear</button>
-    </form>
-
-    <table id="productTable">
-        <thead>
-            <tr>
-                <th>Code</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Category</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
-
-    <ul id="categoryList">
-        
-    </ul>
-    <button onclick="ClearBlock()"> Supprimer </button>
-    <button> Modifier</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-          // Q8
         class Produit {
             constructor(code, title, description, price, category) {
                 this.code = code;
@@ -138,25 +24,25 @@
 
         const products = [];
 
-        // Q1
+ 
         addBtn.addEventListener('click', () => {
             productForm.style.display = 'block';
             resetValuesBtn.style.display = 'none';
         });
 
-        // Q3 annuler
+        //  annuler
         cancelBtn.addEventListener('click', () => {
             productForm.style.display = 'none';
             resetValuesBtn.style.display = 'none';
         });
 
-        // Q4 vider
+        //  vider
         resetBtn.addEventListener('click', () => {
             productForm.reset();
             resetValuesBtn.style.display = 'none';
         });
 
-        // Q2 save
+        //  save
         saveBtn.addEventListener('click', () => {
 
             const productCode = document.getElementById('productCode').value;
@@ -169,7 +55,7 @@
                 const newProduct = new Produit(productCode, productTitle, productDescription, productPrice, productCategory);
                 products.push(newProduct);
 
-                // Q5
+
                 const newRow = document.createElement('tr');
                 newRow.innerHTML = `
             <td>${newProduct.code}</td>
@@ -188,7 +74,7 @@
             }
         });
 
-        // Q7
+
         deleteBtn.addEventListener('click', () => {
             const selectedRows = productTable.querySelectorAll('tr.highlighted');
 
@@ -203,7 +89,7 @@
             }
         });
 
-        // Q6
+
         tbody.addEventListener('click', (event) => {
             const row = event.target.closest('tr');
 
@@ -213,7 +99,7 @@
             }
         });
 
-        // Q9
+
         const produit1 = new Produit('001', 'Produit 1', 'Description du produit 1', 10.99, 'Catégorie 1');
         const produit2 = new Produit('002', 'Produit 2', 'Description du produit 2', 19.99, 'Catégorie 2');
 
@@ -234,7 +120,7 @@
         });
 
 
-        // Q10
+
         const showCategoriesBtn = document.createElement('button');
         showCategoriesBtn.textContent = 'Afficher la liste des catégories';
         document.body.appendChild(showCategoriesBtn);
@@ -258,7 +144,7 @@
                 });
         });
 
-        // Q11
+
         resetValuesBtn.addEventListener('click', () => {
             const row = tbody.querySelector('.highlighted');
             const product = products.find(p => p.code === row.cells[0].textContent);
@@ -272,6 +158,9 @@
             resetValuesBtn.style.display = 'none';
         });
 
-    </script>
-</body>
-</html>
+        ShowBtn.addEventListener('click', () => {
+            console.log(products)
+        });
+
+
+

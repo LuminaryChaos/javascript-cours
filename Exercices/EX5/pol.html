@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            margin: 20px auto;
+            width: 300px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<form id="myForm">
+    <label for="email">Email (Lowercase/Uppercase only):</label>
+    <input type="text" id="email" name="email">
+
+    <label for="gmail">Gmail (Symbols allowed):</label>
+    <input type="text" id="gmail" name="gmail">
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function (event) {
+        var emailInput = document.getElementById('email');
+        var gmailInput = document.getElementById('gmail');
+        var emailRegex = /^[a-zA-Z]+$/;
+        var gmailRegex = /^[a-zA-Z0-9@_.-]+$/;
+
+        // Validation for email input
+        if (!emailRegex.test(emailInput.value)) {
+            emailInput.classList.add('error');
+            event.preventDefault();
+        } else {
+            emailInput.classList.remove('error');
+        }
+
+        // Validation for gmail input
+        if (!gmailRegex.test(gmailInput.value)) {
+            gmailInput.classList.add('error');
+            event.preventDefault();
+        } else {
+            gmailInput.classList.remove('error');
+        }
+    });
+</script>
+
+</body>
+</html>

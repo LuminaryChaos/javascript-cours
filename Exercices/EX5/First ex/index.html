@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gestion des produits d'un store</title>
+    <style>
+        .highlighted {
+            background-color: green;
+        }
+
+        tr,
+        td,
+        th {
+            border: 2px solid black;
+        }
+
+        label{
+            border-style: none;
+            border-color: aquamarine;
+        }
+        div{
+            display: flex;
+            justify-content: space-around;
+            width: 400px;
+        }
+        input{
+            width: 200px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Gestion des produits d'un store</h1>
+
+    <button id="addBtn">Ajouter</button>
+
+    <form id="productForm" style="display: none;">
+
+        <div>
+            <label for="productCode">Code produit:</label><br>
+            <input type="number" id="productCode" required><br>
+        </div>
+
+        <div>
+            <label for="productTitle">Titre:</label>
+            <input type="text" id="productTitle" required>
+        </div>
+        <div>
+            <label for="productDescription">Description:</label><br>
+            <textarea id="productDescription" required></textarea>
+        </div>
+        <div>
+            <label for="productPrice">Prix:</label><br>
+            <input type="number" id="productPrice" required>
+        </div>
+        <div>
+            <label for="productCategory">Catégorie:</label><br>
+            <input type="text" id="productCategory" required>
+        </div>
+
+        <button type="button" id="saveBtn">Sauvegarder</button>
+        <button type="button" id="cancelBtn">Annuler</button>
+        <button type="button" id="resetBtn">Vider</button>
+        <button type="button" id="resetValuesBtn" style="display: none;">Modifier</button>
+    </form>
+
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Code produit</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Catégorie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- les produits -->
+        </tbody>
+    </table>
+
+    <button id="deleteBtn">Supprimer</button>
+    <button id="ShowBtn">aff</button>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

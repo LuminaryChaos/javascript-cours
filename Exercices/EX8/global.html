@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulaire de Sauvegarde</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    .error {
+        border: 1px solid red;
+    }
+    .error-message {
+        color: red;
+    }
+</style>
+</head>
+<body>
+
+<h2>Formulaire de Sauvegarde</h2>
+<form id="data-form">
+    <label for="code">Code:</label><br>
+    <input type="text" id="code" name="code"><br>
+    <label for="nom">Nom:</label><br>
+    <input type="text" id="nom" name="nom"><br>
+    <label for="prenom">Prénom:</label><br>
+    <input type="text" id="prenom" name="prenom"><br>
+    <label for="groupe">Groupe:</label><br>
+    <input type="text" id="groupe" name="groupe"><br>
+    <label for="note">Note:</label><br>
+    <input type="text" id="note" name="note"><br><br>
+    <button type="button" id="btn-sauvegarde">Sauvegarde</button>
+</form>
+
+<div id="error-message" class="error-message"></div>
+
+<h2>Les données sauvegardées:</h2>
+<ul id="data-list"></ul>
+
+<script src="main.js"></script>
+</body>
+</html>
